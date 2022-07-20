@@ -1,0 +1,100 @@
+body {
+
+    background-color: black;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    width: 98vw;
+    /* border: 1px solid red; */
+    margin: auto
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid green;
+    border-radius: 1rem;
+    padding: 4rem;
+    width: 50vw;
+
+}
+
+.consoleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    border: 6px solid green;
+    border-radius: 1rem;
+    padding: 4rem;
+    width: 90vw;
+    height: 80vh
+}
+
+.consoleApp {
+    border: 3px solid white;
+    border-radius: 1rem;
+    height: 10rem;
+    width: 10rem;
+    margin: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginLabel {
+    color: white;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 1rem 0;
+    text-transform: uppercase;
+    color: white;
+}
+
+.loginInput {
+    height: 2rem;
+    width: 20rem;
+    color: green;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#logInBtn {
+    /* width: 5rem; */
+    border-radius: 1rem;
+    margin: 2rem auto 0 auto;
+    background-color: green;
+    color: white;
+    height: 4rem;
+    padding: 1rem 4rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#logInBtn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: green;
+
+}
+
+#messageContainer {
+    color: red;
+    font-size: 2rem;
+}

@@ -1,0 +1,26 @@
+<%- include('./partials/header') %>
+
+    <body>
+
+        <header></header>
+
+        <main class="main">
+            <div class="formContainer">
+                <form class="loginForm" method="POST">
+
+                    <label class="loginLabel" for="login">Login</label>
+                    <input class="loginInput" type="text" id="login" name="login">
+
+
+                    <label class="loginLabel" for="password">Password</label>
+                    <input class="loginInput" type="password" id="password" name="password">
+
+                    <button id="logInBtn">Enter</button>
+                </form>
+                <p id="messageContainer"></p>
+            </div>
+        </main>
+
+        <script type="text/javascript" src="/js/console.js" defer></script>
+
+    </body>

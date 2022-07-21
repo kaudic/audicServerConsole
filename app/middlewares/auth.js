@@ -16,14 +16,11 @@ const auth = async (req, res, next) => {
     // if token exist then decode it and compare to .env Login and password
     try {
         const decodedToken = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-
-        console.log('DECODED TOKEN: ' + JSON.stringify(decodedToken));
-
         const { login, password } = decodedToken;
 
         if (login == process.env.LOGIN && password == process.env.PASSWORD) {
             const pathToConsoleFile = path.normalize(`${__dirname}/../views/console.ejs`);
-            console.log(pathToConsoleFile);
+
             fs.readFile(pathToConsoleFile, 'utf8', (err, data) => {
                 return res.json({
                     result: true,

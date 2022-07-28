@@ -17,6 +17,16 @@ router.get('/imagesApp', (req, res) => {
     console.log('coucou2');
 });
 
+// listenning to the proxy server events
+proxy.on('error', (err, req, res) => {
+    console.log('got an error : ', err)
+});
+
+proxy.on('proxyRes', (proxyRes, req, res) => {
+    console.log(' got a response from the server ..');
+    return proxyRes;
+})
+
 
 // Route for Logging in
 router.post('/', controller.loggIn);

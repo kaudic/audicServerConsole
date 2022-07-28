@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
 
+    // if the full url is http://audicserver.ddns.net:3000/toto
+    // "/toto" can be found in req.path or req.originalUrl
+
     console.log(`req.path: ${req.path}`);
     console.log(`req.subdomains: ${req.subdomains}`);
     console.log(`req.baseUrl: ${req.baseUrl}`);

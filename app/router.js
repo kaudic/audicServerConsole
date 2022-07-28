@@ -31,7 +31,8 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
 
         // need to parse the body to replace the path of the css
         const missingDirectory = path.normalize(`${__dirname}/../../imagesApp/public`);
-        body = body.replace('/css', `${missingDirectory}`).replace('/css', `${missingDirectory}`);
+        body = body.replace('/css', `${missingDirectory}`).replace('/css', `${missingDirectory}/css`);
+        body = body.replace('/js', `${missingDirectory}/js`);
 
         // console.log('missingDirectory: ' + missingDirectory);
 

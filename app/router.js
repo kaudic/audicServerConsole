@@ -39,6 +39,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
             _write.call(res, JSON.stringify(output));
         } catch (err) { }
     }
+    res.end();
 })
 
 

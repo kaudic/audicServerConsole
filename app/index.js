@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const router = require('./router');
 const app = express();
+const path = require('path');
 
 // first middlewares
 
@@ -9,7 +10,8 @@ app.use(cors());
 app.set('views', `${process.cwd()}/app/views`);
 app.set('view engine', 'ejs');
 // app.use(express.static('./public'));
-app.use(express.static('/../imagesApp/public'));
+const prefix = path.normalize(`${_dirname}/../`)
+app.use(express.static(`${prefix}/imagesApp/public`));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

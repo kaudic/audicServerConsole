@@ -12,7 +12,12 @@ const proxy = httpProxy.createProxyServer({});
 // Route for welcoming page - controling token first
 router.get('/', auth, controller.homePage);
 router.get('/imagesApp', (req, res) => {
-    // it will forward the request to imagesApp which is running on audicserver on port 4000 - ip below is the audicserver computer
+    // we cut "/imagesApp" as in the local App it starts from "/"
+    // delete req.headers.host;
+    // req.url = req.url.replace('/api/v1', '/');
+
+    // forward the request to app "magesApp" which is running on audicserver on port 4000 - ip below is the audicserver computer
+    // selfHandleResponse will enable on below events to modify the response
     proxy.web(req, res, { target: 'http://192.168.1.18:4000', selfHandleResponse: true });
 });
 
@@ -31,8 +36,8 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
 
         // need to parse the body to replace the path of the css
         const missingDirectory = path.normalize(`${__dirname}/../../imagesApp/public`);
-        body = body.replace('/css', `${missingDirectory}/css`).replace('/css', `${missingDirectory}/css`);
-        body = body.replace('/js', `${missingDirectory}/js`);
+        // body = body.replace('/css', `${missingDirectory}/css`).replace('/css', `${missingDirectory}/css`);
+        // body = body.replace('/js', `${missingDirectory}/js`);
 
         // console.log('missingDirectory: ' + missingDirectory);
 

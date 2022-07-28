@@ -30,6 +30,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
     proxyRes.on('data', function (data) {
         data = data.toString('utf-8');
         body += data;
+        console.log(data);
     });
     res.write = function (data) {
         try {

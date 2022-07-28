@@ -34,6 +34,37 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
 
     console.log(bodyContent);
 
+    bodyContent = `<!DOCTYPE html>
+    <html lang="fr">
+    
+    </html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preload" href="imagesApp/css/style.css" as="style">
+        <link rel="stylesheet" href="imagesApp/css/style.css">
+    </head>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/7a7244ff73.js" crossorigin="anonymous"></script><nav class="nav">
+    <ul class="nav__list">
+        <li><a id="index" href="/tags" class="nav__listItem">Tag Images</a>
+        </li>
+        <li><a id="portfolio" href="/upload" class="nav__listItem">Upload</li></a>
+        <li><a id="apropos" href="/search" class="nav__listItem">Search</li></a>
+    </ul>
+</nav><body>
+<main class="main">
+    <div class="consoleContainer">
+        <p>coucou</p>
+    </div>
+</main>
+
+<script type="text/javascript" src="imagesApp/js/app.js" defer></script>
+</body>`;
+
     res.headers = proxyRes.headers;
     res.send(bodyContent);
 });

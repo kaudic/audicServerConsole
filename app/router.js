@@ -32,6 +32,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
         console.log(bodyContent);
     });
 
+    res.headers = proxyRes.headers;
     res.send(bodyContent);
 });
 

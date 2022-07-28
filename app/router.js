@@ -31,7 +31,9 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
 
         // need to parse the body to replace the path of the css
         const missingDirectory = path.normalize(`${__dirname}/..`);
-        body.replace(`<link rel="preload" href="`, `<link rel="preload" href="${missingDirectory}`);
+        console.log('missingDirectory: ' + missingDirectory);
+
+        body.replace(`<link rel="preload"`, `<link rel="preloadod"`);
 
         console.log("res from proxied server:", body);
         res.end("my response to cli");

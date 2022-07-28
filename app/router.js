@@ -4,6 +4,7 @@ const router = express.Router();
 const auth = require('./middlewares/auth');
 const controller = require('./controller');
 const httpProxy = require('http-proxy');
+const path = require('path');
 
 // Create a reverse proxy to follow the request to other applications running on different ports
 const proxy = httpProxy.createProxyServer({});
@@ -27,6 +28,11 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
     });
     proxyRes.on('end', function () {
         body = Buffer.concat(body).toString();
+
+        // need to parse the body to replace the path of the css
+        const missingDirectory = path.normalize(`${__dirname}/..`);
+        body.replace(`<link rel="preload" href="`, `<link rel="preload" href="${missingDirectory}`);
+
         console.log("res from proxied server:", body);
         res.end("my response to cli");
     });

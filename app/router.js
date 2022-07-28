@@ -35,9 +35,8 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
 
         // console.log('missingDirectory: ' + missingDirectory);
 
-
         console.log("res from proxied server:", body);
-        res.end("my response to cli");
+        res.end(body);
     });
 
 });

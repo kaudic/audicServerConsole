@@ -29,8 +29,10 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
     proxyRes.on('data', function (data) {
         data = data.toString('utf-8');
         bodyContent += data;
-        console.log(bodyContent);
+        // console.log(bodyContent);
     });
+
+    console.log(bodyContent);
 
     res.headers = proxyRes.headers;
     res.send(bodyContent);

@@ -22,6 +22,8 @@ app.use((req, res, next) => {
     console.log(`req.originalUrl: ${req.originalUrl}`);
     console.log(`req.path: ${req.path}`);
 
+    next();
+
 });
 
 app.use(router);

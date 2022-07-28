@@ -13,7 +13,7 @@ router.get('/', auth, controller.homePage);
 router.get('/imagesApp', (req, res) => {
     console.log('coucou');
     // it will forward the request to imagesApp which is running on audicserver on port 4000 - ip below is the audicserver computer
-    proxy.web(req, res, { target: 'http://localhost:4000' });
+    proxy.web(req, res, { target: 'https://192.168.1.18:4000' });
     console.log('coucou2');
 });
 

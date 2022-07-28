@@ -25,7 +25,7 @@ proxy.on('error', (err, req, res) => {
 proxy.on('proxyRes', (proxyRes, req, res) => {
     console.log(' got a response from the server ..');
     console.log(proxyRes);
-    return res.json({ message: proxyRes.headers });
+    return res.json({ message: proxyRes.body });
     // return proxyRes;
 })
 

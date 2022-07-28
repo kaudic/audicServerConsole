@@ -30,10 +30,10 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
         body = Buffer.concat(body).toString();
 
         // need to parse the body to replace the path of the css
-        const missingDirectory = path.normalize(`${__dirname}/../../imagesApp/public`);
-        console.log('missingDirectory: ' + missingDirectory);
+        // const missingDirectory = path.normalize(`${__dirname}/../../imagesApp/public`);
+        // console.log('missingDirectory: ' + missingDirectory);
 
-        body.replace('/css', `${missingDirectory}/css`);
+        body.replace('css', 'toto');
 
         console.log("res from proxied server:", body);
         res.end("my response to cli");

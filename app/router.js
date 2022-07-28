@@ -23,24 +23,17 @@ proxy.on('error', (err, req, res) => {
 });
 
 proxy.on('proxyRes', (proxyRes, req, res) => {
-    console.log(' got a response from the server ..');
-    var _write = res.write;
-    var output;
-    var body = "";
+
+    let bodyContent = "";
+
     proxyRes.on('data', function (data) {
         data = data.toString('utf-8');
-        body += data;
-        console.log(data);
+        bodyContent += data;
+        console.log(bodyContent);
     });
-    res.write = function (data) {
-        try {
-            eval("output=" + body)
-            output = mock.mock(output)
-            _write.call(res, JSON.stringify(output));
-        } catch (err) { }
-    }
-    res.send();
-})
+
+    res.send(bodyContent);
+});
 
 
 // Route for Logging in

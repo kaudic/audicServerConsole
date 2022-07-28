@@ -9,11 +9,8 @@ const path = require('path');
 app.use(cors());
 app.set('views', `${process.cwd()}/app/views`);
 app.set('view engine', 'ejs');
-// app.use(express.static('./public'));
-// const prefix = path.normalize(`${__dirname}/../..`);
-// console.log(prefix + '\\imagesApp\\public');
-// app.use(express.static(`${prefix}\\imagesApp\\public`));
-app.use(express.static(__dirname + '/public'));
+const prefix = path.normalize(`${process.cwd()}/../imagesApp`)
+app.use(express.static(prefix + '/public'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,12 +20,12 @@ app.use((req, res, next) => {
     // if the full url is http://audicserver.ddns.net:3000/toto
     // "/toto" can be found in req.path or req.originalUrl
 
-    console.log(`req.path: ${req.path}`);
-    console.log(`req.subdomains: ${req.subdomains}`);
-    console.log(`req.baseUrl: ${req.baseUrl}`);
-    console.log(`req.hostname: ${req.hostname}`);
-    console.log(`req.originalUrl: ${req.originalUrl}`);
-    console.log(`req.path: ${req.path}`);
+    // console.log(`req.path: ${req.path}`);
+    // console.log(`req.subdomains: ${req.subdomains}`);
+    // console.log(`req.baseUrl: ${req.baseUrl}`);
+    // console.log(`req.hostname: ${req.hostname}`);
+    // console.log(`req.originalUrl: ${req.originalUrl}`);
+    // console.log(`req.path: ${req.path}`);
 
     next();
 

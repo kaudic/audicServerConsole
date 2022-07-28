@@ -13,8 +13,8 @@ const proxy = httpProxy.createProxyServer({});
 router.get('/', auth, controller.homePage);
 router.get('/imagesApp', (req, res) => {
     // we cut "/imagesApp" as in the local App it starts from "/"
-    // delete req.headers.host;
-    // req.url = req.url.replace('/api/v1', '/');
+    delete req.headers.host;
+    req.url = req.url.replace('/api/v1', '/');
 
     // forward the request to app "magesApp" which is running on audicserver on port 4000 - ip below is the audicserver computer
     // selfHandleResponse will enable on below events to modify the response
@@ -35,7 +35,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
         body = Buffer.concat(body).toString();
 
         // need to parse the body to replace the path of the css
-        const missingDirectory = path.normalize(`${__dirname}/../../imagesApp/public`);
+        // const missingDirectory = path.normalize(`${__dirname}/../../imagesApp/public`);
         // body = body.replace('/css', `${missingDirectory}/css`).replace('/css', `${missingDirectory}/css`);
         // body = body.replace('/js', `${missingDirectory}/js`);
 

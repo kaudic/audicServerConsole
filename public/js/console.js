@@ -7,6 +7,7 @@ const script = {
         // try to POST it directly
         const token = window.localStorage.getItem('audicServerToken');
 
+        /*
         if (token) {
             const login = await fetch('/', {
                 method: 'GET',
@@ -31,7 +32,7 @@ const script = {
             }
 
         }
-
+*/
 
     },
     addListennersToAction: () => {

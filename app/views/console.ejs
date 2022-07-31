@@ -15,7 +15,7 @@
 
     <main class="main">
         <div class="consoleContainer">
-            <a href="http://audicserver.ddns.net:4000/">
+            <a href="<%=process.env.BASE_URL%>:<%=process.env.PORT%>/imagesApp">
                 <div class="consoleApp">Images</div>
             </a>
             <a href="http://audicserver.ddns.net:4000/">
@@ -24,6 +24,6 @@
         </div>
     </main>
 
-    <script type="text/javascript" src="/js/console.js" defer></script>
+    <script type="text/javascript" src="/audicServerConsole/public/js/console.js" defer></script>
 
 </body>

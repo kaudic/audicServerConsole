@@ -17,14 +17,13 @@ const imgStaticPath = path.normalize(`${__dirname}/../../public`);
 router.use(express.static(imgStaticPath));
 
 // we use the class body parser middlewares for this app only NOT for the proxied requests, it will cause problems
-router.use(express.json());
 // router.use(express.urlencoded({ extended: true }));
 
 // Welcoming Page
 router.get('/', controllerHandler(controller.homePage));
 
 // Log in if "auth" at previous route didn't work
-router.post('/', controllerHandler(controller.loggIn));
+router.post('/', express.json(), controllerHandler(controller.loggIn));
 
 
 module.exports = router;

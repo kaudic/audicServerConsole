@@ -34,7 +34,6 @@ imgProxy.on('proxyRes', async (proxyRes, req, res) => {
     });
     proxyRes.on('end', function () {
         body = Buffer.concat(body); // sending buffers
-        console.log(body);
         res.end(body);
     });
 });
@@ -56,6 +55,18 @@ proxy.on('error', (err, req, res) => {
     console.log('got an error : ', err)
 });
 
+// proxy.on('proxyReq', async (proxyReq, req, res) => {
+//     if (req.body) {
+//         const bodyData = JSON.stringify(req.body);
+//         console.log(bodyData);
+//         // incase if content-type is application/x-www-form-urlencoded -> we need to change to application/json
+//         proxyReq.setHeader('Content-Type', 'application/json');
+//         proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+//         // stream the content
+//         proxyReq.write(bodyData);
+//     }
+// });
+
 proxy.on('proxyRes', async (proxyRes, req, res) => {
     var body = [];
     proxyRes.on('data', function (chunk) {
@@ -63,6 +74,7 @@ proxy.on('proxyRes', async (proxyRes, req, res) => {
     });
     proxyRes.on('end', function () {
         body = Buffer.concat(body).toString(); // sending string build from Buffer
+        // console.log(body);
         res.end(body);
     });
 });

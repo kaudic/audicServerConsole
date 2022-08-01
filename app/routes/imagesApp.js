@@ -34,6 +34,7 @@ imgProxy.on('proxyRes', async (proxyRes, req, res) => {
     });
     proxyRes.on('end', function () {
         body = Buffer.concat(body); // sending buffers
+        console.log(body);
         res.end(body);
     });
 });

@@ -4,7 +4,6 @@ const router = express.Router();
 
 // REVERSE PROXY 
 const httpProxy = require('http-proxy');
-const path = require('path');
 
 // proxy for requests (all except images and we will send string)
 const proxy = httpProxy.createProxyServer({});
@@ -43,8 +42,10 @@ router.use('/', (req, res) => {
     console.log(req.url);
     // forward requests to tagret app
     if (process.env.NODE_ENV === 'production') {
+        console.log('IP prod');
         proxy.web(req, res, { target: 'http://192.168.1.18:4000', selfHandleResponse: true });
     } else {
+        console.log('IP local');
         proxy.web(req, res, { target: 'http://localhost:4000', selfHandleResponse: true });
     }
 });

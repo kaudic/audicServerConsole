@@ -2,6 +2,9 @@
 const express = require('express');
 const router = express.Router();
 
+// Imports of middlewares
+const auth = require('../middlewares/sessionAuth');
+
 // REVERSE PROXY 
 const httpProxy = require('http-proxy');
 
@@ -10,6 +13,8 @@ const proxy = httpProxy.createProxyServer({});
 
 // proxy for image (we will send buffer)
 const imgProxy = httpProxy.createProxyServer({});
+
+router.use(auth);
 
 // this route will get the requests for statics images
 router.get(/\/assets/, (req, res) => {

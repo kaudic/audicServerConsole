@@ -1,11 +1,19 @@
 const express = require('express');
-const cors = require('cors');
 const router = require('./routes');
+const session = require('express-session');
 const app = express();
 
 // first middlewares
+app.use(session({
+    secret: 'TheBestAudicServerSecret',
+    resave: true,
+    saveUninitialized: true,
+    name: '__session',
+    cookie: {
+        maxAge: process.env.SESSION_MINUTES * 60 * 1000
+    }
+}));
 
-// app.use(cors());
 app.set('views', `${process.cwd()}/app/views`);
 app.set('view engine', 'ejs');
 

@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 
+// imports of middlewares
+const auth = require('../middlewares/sessionAuth');
 
 // Importation des routeurs secondaires
 const serverConsole = require('./serverConsole');

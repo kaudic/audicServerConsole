@@ -5,7 +5,11 @@ const path = require('path');
 const auth = async (req, res, next) => {
     // get the token from the request
     const token = req.headers['authorization'];
-    console.log('TOKEN reçu dans la request: ' + token);
+    console.log(token);
+
+    if (token) {
+        console.log('TOKEN reçu dans la request: ' + token);
+    }
 
     // if token not existing render the login page
     if (token == null) {
@@ -21,6 +25,8 @@ const auth = async (req, res, next) => {
         if (login == process.env.LOGIN && password == process.env.PASSWORD) {
             const pathToConsoleFile = path.normalize(`${__dirname}/../views/console.ejs`);
 
+            console.log('les informations de connexion sont correctes');
+
             fs.readFile(pathToConsoleFile, 'utf8', (err, data) => {
                 return res.json({
                     result: true,
@@ -29,6 +35,7 @@ const auth = async (req, res, next) => {
             });
 
         } else {
+            console.log('les informations de connexion ne sont pas correctes');
             res.json({
                 result: false,
                 message: 'les informations de connexion ne sont pas correctes'

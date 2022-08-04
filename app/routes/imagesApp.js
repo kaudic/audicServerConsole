@@ -46,12 +46,11 @@ imgProxy.on('proxyRes', async (proxyRes, req, res) => {
 router.use('/', (req, res) => {
     // forward requests to tagret app
     if (process.env.NODE_ENV === 'production') {
-        proxy.web(req, res, { target: 'http://192.168.1.18:4000', selfHandleResponse: true });
+        proxy.web(req, res, { target: 'http://192.168.1.18:4000', selfHandleResponse: true, ws: true });
     } else {
-        proxy.web(req, res, { target: 'http://localhost:4000', selfHandleResponse: true });
+        proxy.web(req, res, { target: 'http://localhost:4000', selfHandleResponse: true, ws: true });
     }
 });
-
 
 // listenning to the proxy server events
 proxy.on('error', (err, req, res) => {
@@ -67,6 +66,14 @@ proxy.on('proxyRes', async (proxyRes, req, res) => {
         body = Buffer.concat(body).toString(); // sending string build from Buffer
         res.end(body);
     });
+});
+
+// Listen to the `upgrade` event and proxy the
+// WebSocket requests as well.
+//
+proxy.on('upgrade', function (req, socket, head) {
+    console.log('upgrade en cours');
+    proxy.ws(req, socket);
 });
 
 

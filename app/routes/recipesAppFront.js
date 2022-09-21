@@ -29,16 +29,16 @@ proxy.on('error', (err, req, res) => {
     console.log('got an error : ', err)
 });
 
-// proxy.on('proxyRes', async (proxyRes, req, res) => {
-//     var body = [];
-//     proxyRes.on('data', function (chunk) {
-//         body.push(chunk);
-//     });
-//     proxyRes.on('end', function () {
-//         body = Buffer.concat(body).toString(); // sending string build from Buffer
-//         res.end(body);
-//     });
-// });
+proxy.on('proxyRes', async (proxyRes, req, res) => {
+    var body = [];
+    proxyRes.on('data', function (chunk) {
+        body.push(chunk);
+    });
+    proxyRes.on('end', function () {
+        // body = Buffer.concat(body).toString(); // sending string build from Buffer
+        res.end(body);
+    });
+});
 
 // Listen to the `upgrade` event and proxy the
 // WebSocket requests as well.

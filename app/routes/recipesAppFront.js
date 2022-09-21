@@ -18,9 +18,9 @@ router.use('/', (req, res) => {
     // forward requests to target app
     if (process.env.NODE_ENV === 'production') {
         console.log('Request received in Proxy Prod for recipesAppFront');
-        proxy.web(req, res, { target: 'http://192.168.1.18:3002', selfHandleResponse: true, ws: true });
+        proxy.web(req, res, { target: 'http://192.168.1.18:3002' });
     } else {
-        proxy.web(req, res, { target: 'http://localhost:3002', selfHandleResponse: true, ws: true });
+        proxy.web(req, res, { target: 'http://localhost:3002' });
     }
 });
 
@@ -29,24 +29,6 @@ proxy.on('error', (err, req, res) => {
     console.log('got an error : ', err)
 });
 
-proxy.on('proxyRes', async (proxyRes, req, res) => {
-    var body = [];
-    proxyRes.on('data', function (chunk) {
-        body.push(chunk);
-    });
-    proxyRes.on('end', function () {
-        // body = Buffer.concat(body).toString(); // sending string build from Buffer
-        res.end(body);
-    });
-});
-
-// Listen to the `upgrade` event and proxy the
-// WebSocket requests as well.
-//
-// proxy.on('upgrade', function (req, socket, head) {
-//     console.log('upgrade en cours');
-//     proxy.ws(req, socket);
-// });
 
 
 module.exports = router;

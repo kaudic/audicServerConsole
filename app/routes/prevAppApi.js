@@ -30,5 +30,14 @@ proxy.on('error', (err, req, res) => {
     console.log('got an error : ', err)
 });
 
+// Listen to the `upgrade` event and proxy the
+// WebSocket requests as well.
+//
+proxy.on('upgrade', function (req, socket, head) {
+    console.log('upgrade en cours');
+    proxy.ws(req, socket);
+});
+
+
 
 module.exports = router;

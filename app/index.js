@@ -9,15 +9,15 @@ app.use((req, res, next) => {
 })
 
 // first middlewares
-app.use(session({
-    secret: 'TheBestAudicServerSecret',
-    resave: true,
-    saveUninitialized: true,
-    name: '__session',
-    cookie: {
-        maxAge: process.env.SESSION_MINUTES * 60 * 1000
-    }
-}));
+// app.use(session({
+//     secret: 'TheBestAudicServerSecret',
+//     resave: true,
+//     saveUninitialized: true,
+//     name: '__session',
+//     cookie: {
+//         maxAge: process.env.SESSION_MINUTES * 60 * 1000
+//     }
+// }));
 
 app.set('views', `${process.cwd()}/app/views`);
 app.set('view engine', 'ejs');

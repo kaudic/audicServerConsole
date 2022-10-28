@@ -15,13 +15,12 @@ const proxy = httpProxy.createProxyServer({});
 
 // All request starting with /recipesAppBack will be here
 router.use('/', (req, res) => {
-    // forward requests to target app
+    // forward requests to target app with WEBSOCKET OPTION To true
     if (process.env.NODE_ENV === 'production') {
         console.log('Request received in Proxy Prod for prevAppApi');
-        proxy.web(req, res, { target: 'http://192.168.1.18:3004' });
+        proxy.web(req, res, { target: 'http://192.168.1.18:3004', ws: true });
     } else {
-        console.log('Request received in Proxy Prod for prevAppApi');
-        proxy.web(req, res, { target: 'http://localhost:3004' });
+        proxy.web(req, res, { target: 'http://localhost:3004', ws: true });
     }
 });
 

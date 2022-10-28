@@ -11,7 +11,7 @@ const httpProxy = require('http-proxy');
 // proxy for requests (all except images and we will send string)
 const proxy = httpProxy.createProxyServer({});
 
-router.use(auth);
+// router.use(auth);
 
 // All request starting with /recipesAppBack will be here
 router.use('/', (req, res) => {

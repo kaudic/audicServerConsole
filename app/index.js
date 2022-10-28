@@ -3,6 +3,8 @@ const router = require('./routes');
 const session = require('express-session');
 const app = express();
 
+console.log('request received');
+
 // first middlewares
 app.use(session({
     secret: 'TheBestAudicServerSecret',

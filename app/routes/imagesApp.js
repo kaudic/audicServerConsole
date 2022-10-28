@@ -73,6 +73,7 @@ proxy.on('proxyRes', async (proxyRes, req, res) => {
 //
 proxy.on('upgrade', function (req, socket, head) {
     console.log('upgrade en cours');
+    console.log(socket);
     proxy.ws(req, socket);
 });
 

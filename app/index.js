@@ -3,7 +3,10 @@ const router = require('./routes');
 const session = require('express-session');
 const app = express();
 
-console.log('request received');
+app.use((req, res, next) => {
+    console.log('request received');
+    next();
+})
 
 // first middlewares
 app.use(session({

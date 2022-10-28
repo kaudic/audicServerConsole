@@ -20,6 +20,7 @@ router.use('/', (req, res) => {
         console.log('Request received in Proxy Prod for prevAppApi');
         proxy.web(req, res, { target: 'http://192.168.1.18:3004' });
     } else {
+        console.log('Request received in Proxy Prod for prevAppApi');
         proxy.web(req, res, { target: 'http://localhost:3004' });
     }
 });

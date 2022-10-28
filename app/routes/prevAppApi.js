@@ -18,9 +18,9 @@ router.use('/', (req, res) => {
     // forward requests to target app with WEBSOCKET OPTION To true
     if (process.env.NODE_ENV === 'production') {
         console.log('Request received in Proxy Prod for prevAppApi');
-        proxy.web(req, res, { target: 'http://192.168.1.18:3004', selfHandleResponse: true, ws: true });
+        proxy.web(req, res, { target: 'http://192.168.1.18:3004', ws: true });
     } else {
-        proxy.web(req, res, { target: 'http://localhost:3004', selfHandleResponse: true, ws: true });
+        proxy.web(req, res, { target: 'http://localhost:3004', ws: true });
     }
 });
 
@@ -36,7 +36,6 @@ proxy.on('upgrade', function (req, socket, head) {
     console.log('upgrade en cours');
     proxy.ws(req, socket);
 });
-
 
 
 module.exports = router;
